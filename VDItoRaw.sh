@@ -21,10 +21,20 @@ if [  $# -le 1 ]
 	then
 		usage
 		exit 1
-	fi
+fi
 
 if file $1 | grep -q "<<< Oracle VM VirtualBox Disk Image >>>" ; then
-  dcfldd if=$1 of=$2 bs=512 skip=4096 count=1 hash=md5 hashwindow=1G hashlog=VDIhashes.txt
+  dcfldd if=$1 of=$2 bs=512 skip=4096 hash=md5 hashwindow=1G hashlog=Hashlog.txt
+  echo "Calculating and Verifying md5 hashes- This may take some time"
+  HASH1=$(dd if=$1 bs=512 skip=4096 | md5sum)
+  HASH2=$(dd if=$2 | md5sum)
+  echo 'md5 of VDI file is ' $HASH1
+  echo 'md5 of Raw is ' $HASH2
+  if [ "$HASH1"="$HASH2" ] ; then
+    echo "MD5 Hashes Match!"
+  else
+    echo "ERROR HASHES DO NOT MATCH"
+  fi
 else
   echo "not a Virtual Disk Image File"
 fi
