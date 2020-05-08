@@ -24,7 +24,7 @@ if [  $# -le 1 ]
 	fi
 
 if file $1 | grep -q "<<< Oracle VM VirtualBox Disk Image >>>" ; then
-  dcfldd if=$1 of=$2 bs=512 skip=4096 count=1 hash=md5 hashwindow=1G hashlog=VDIhashes.txt
+  dcfldd if=$1 of=$2 bs=512 skip=4096 hash=md5 hashwindow=1G hashlog=VDIhashes.txt
 else
   echo "not a Virtual Disk Image File"
 fi
