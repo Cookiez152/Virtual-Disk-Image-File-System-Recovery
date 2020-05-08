@@ -12,15 +12,14 @@ usage() {
 }
 
 if ! type dcfldd > /dev/null; then
-  echo "Script utilizes dcfldd by the Department of Defense Computer Forensics Lab"
+	echo "Script utilizes dcfldd by the Department of Defense Computer Forensics Lab"
   echo "Installing Now"
   sudo apt install dcfldd
 fi
 
-if [  $# -le 1 ]
-	then
-		usage
-		exit 1
+if [  $# -le 1 ] ; then
+	usage
+	exit 1
 fi
 
 if file $1 | grep -q "<<< Oracle VM VirtualBox Disk Image >>>" ; then
