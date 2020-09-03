@@ -7,7 +7,7 @@
 
 usage() {
 
-  echo "$0 USAGE: ./VDItoRaw.sh <VDI FileName> <name of imagefile>"
+  echo "$0 USAGE: ./VDItoRaw.sh <VDI FileName> <name of new imagefile>"
   echo "Simple BASH Script for recovering file system of a Virtual Disk Image"
 }
 
