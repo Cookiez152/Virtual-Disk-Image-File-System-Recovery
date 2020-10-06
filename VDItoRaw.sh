@@ -35,5 +35,5 @@ if file $1 | grep -q "<<< Oracle VM VirtualBox Disk Image >>>" ; then
     echo "ERROR HASHES DO NOT MATCH"
   fi
 else
-  echo "not a Virtual Disk Image File"
+  echo "not an Oracle Virtual Disk Image File- could be a different VDI format"
 fi
